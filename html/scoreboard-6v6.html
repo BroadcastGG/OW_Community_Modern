@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    div.left {
+      background-color:
+        /* #27AAE1 */
+        #000000;
+    }
+
+    div.right {
+      background-color:
+        /* #C80013 */
+        #000000;
+    }
+
+    /*
+
+OVERWATCH OFFICIAL LEAGUE BRANDING COLORS
+#8cba11		Overwatch Contenders Green
+#ff9c00		Overwatch Generic/League Orange
+#202224		Overwatch Contenders/League Dark Grey
+
+OVERWATCH COLORBLIND UI COLORS
+#C80013		Red (Enemy Default)
+#D45800		Tawny
+#D47900		Orange
+#FFD700		Gold
+#FFFF00		Yellow
+#CCFF00		Lime Green
+#00AB84		Green
+#00FFFF		Neon Blue
+#27AAE1		Blue (Friendly Default)
+#800080		Purple
+#523FFF		Aqua
+#FF00FF		Magenta
+#FF6EC7		Pink
+
+OTHER BRANDED COLORS
+#00a5e2		Overwatch Website Blue
+
+*/
+
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Bold.ttf") format('TrueType');
+      font-weight: bold;
+    }
+
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Regular.ttf") format('TrueType');
+      font-weight: normal;
+    }
+
+    div {
+      -webkit-animation-timing-function: ease-out;
+    }
+
+    span {
+      -webkit-animation-timing-function: ease-out;
+    }
+
+    div.left {
+      animation: leftmove 0.75s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+      text-align: right;
+    }
+
+    #team1side span {
+      animation: leftmove 1.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    div.right {
+      animation: rightmove 0.75s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    #team2side span {
+      animation: rightmove 1.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    div.center {
+      animation: topmove 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    span.score {
+      animation: fadein 2s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    span.logo,
+    span.logoshade {
+      animation: fadein 3s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    span.teamname {
+      animation: fadein 4s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    span.teamsr {
+      animation: fadein 5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    @-webkit-keyframes leftmove {
+      from {
+        left: -850px;
+      }
+
+      to {
+        left: -7px;
+      }
+    }
+
+    @-webkit-keyframes rightmove {
+      from {
+        right: -850px;
+      }
+
+      to {
+        right: -7px;
+      }
+    }
+
+    @keyframes topmove {
+      0% {
+        top: -46px;
+      }
+
+      50% {
+        top: -46px;
+      }
+
+      100% {
+        top: 10px;
+      }
+    }
+
+    @keyframes fadein {
+      0% {
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideleft {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes tagline {
+      0% {
+        clip-path: polygon(0% -100%, 0 -100%, 0% 200%, 0% 200%);
+        transform: translateX(50%)
+          /* skewX(-15deg) */
+        ;
+      }
+
+      100% {
+        clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+        transform: translateX(0%)
+          /* skewX(-15deg) */
+        ;
+      }
+    }
+
+
+
+    div.left,
+    div.right {
+      width: 685px/*694px*/;
+      height: 46px;
+      border: 0px solid black;
+      vertical-align: middle;
+    }
+
+
+    div.center {
+      width: 100%;
+      height: 46px;
+      border: 0px solid black;
+      vertical-align: middle;
+      /* background-color: #0000007F; */
+      text-shadow: 0px 0px 7px #000000;
+      /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3)); */
+      position: fixed;
+      left: 0px;
+      top: 13px;
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: row;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      padding-top: 6px;
+      /* YEAH THIS IS HUGE */
+    }
+
+    span {
+      margin: 0;
+      /*
+      position: absolute;
+      */
+      top: 50%;
+      font-family: 'Rajdhani';
+      font-variant-ligatures: none;
+      text-transform: uppercase;
+      color: white;
+      /* text-shadow: 0px 0px 7px #000000; */
+    }
+
+    span.logo,
+    span.logoshade {
+      /* -webkit-filter: drop-shadow(0 0 5px white); */
+      position: absolute;
+    }
+
+    div.side {
+      /* -webkit-filter: drop-shadow(0 0 2px black); */
+    }
+
+    div.side span {
+      position: absolute;
+    }
+
+    span.teamname {
+      font-size: 2em;
+    }
+
+    span.teamsr {
+      font-size: 1.5em;
+      font-family: 'Rajdhani';
+    }
+
+    span.score {
+      font-size: 3em;
+      position: absolute;
+      font-weight: bold;
+      top: 23px;
+    }
+
+    div.left span.teamname {
+      position: relative;
+      right: 200px;
+      top: 3px;
+
+      /* transform: translate(-200px, -50%); */
+    }
+
+    div.left span.teamsr {
+      position: relative;
+      right: 210px;
+      top: 3px;
+      /* transform: translate(-200px, -50%); */
+    }
+
+    div.center span.teamname {
+      text-align: center;
+      transform: translate(0%, -50%);
+      font-size: 1.5em;
+      padding-left: 60px;
+      padding-right: 60px;
+      font-family: 'Rajdhani';
+    }
+
+    div.left span.score {
+      width: 65px;
+      text-align: center;
+      right: 0px;
+      top: 25px;
+      transform: translate(-7px, -50%);
+    }
+
+    div.right span.teamname {
+      position: relative;
+      left: 200px;
+      top: 3px;
+
+      /* transform: translate(-200px, -50%); */
+    }
+
+    div.right span.teamsr {
+      position: relative;
+      left: 210px;
+      top: 3px;
+      /* transform: translate(-200px, -50%); */
+    }
+
+    div.left {
+      /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3)); */
+      position: fixed;
+      top: 13px;
+      left: -7px;
+      border-style: solid;
+      border-width: 0px 7px 0px 0px;
+      border-color: #27AAE1;
+      /* transform: skewX(-15deg); */
+      /* clip-path: polygon(0% 0%, 100% 0%, 691.14px 100%, 0 100%); */
+    }
+
+    div.left span.logo {
+      width: 80px;
+      height: 62px;
+      right: 0px;
+      transform: translate(-90px, -50%) /*skewX(15deg)*/;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #team1side span {
+      position: fixed;
+      width: 818px;
+      height: 36px;
+      top: 35px;
+      left: -7px;
+      transform: translate(-70px, -50%);
+      -webkit-mask-position: right;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+    }
+
+    div.left span.logoshade {
+      width: 100px;
+      height: 46px;
+      right: 0px;
+      transform: translate(-80px, -50%)
+        /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3)); */
+    }
+
+    div.right span.logo {
+      width: 80px;
+      height: 62px;
+      left: 0px;
+      transform: translate(90px, -50%) /*skewX(-15deg)*/;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+    }
+
+    #team2side span {
+      position: fixed;
+      width: 818px;
+      height: 36px;
+      right: -7px;
+      top: 35px;
+      transform: translate(70px, -50%);
+      -webkit-mask-position: left;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+    }
+
+    div.right span.logoshade {
+      width: 100px;
+      height: 46px;
+      left: 0px;
+      transform: translate(80px, -50%)
+        /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3)); */
+    }
+
+    div.right span.score {
+      width: 65px;
+      text-align: center;
+      left: 0px;
+      top: 25px;
+      transform: translate(7px, -50%);
+    }
+
+    div.right {
+      /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3)); */
+      position: fixed;
+      right: -7px;
+      top: 13px;
+      border-style: solid;
+      border-width: 0px 0px 0px 7px;
+      border-color: #C80013;
+      /* transform: skewX(15deg); */
+      /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 12.86px 100%); */
+    }
+
+    div.footer {
+      position: fixed;
+      left: 0px;
+      bottom: 0px;
+      width: 1900px;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: row;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+      padding: 10px;
+    }
+
+    div.tournament {
+      flex: 1 1 100%;
+      height: 80px;
+      background-position: left;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    div.tagline {
+      min-width: 375px;
+      animation: tagline .5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2s;
+      /* transform: skewX(-15deg); */
+    }
+
+    span.tertiary {
+      font-size: 1.8em;
+      border-style: solid;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Rajdhani';
+      padding: 3px 15px 2px 15px;
+      border-width: 0px 6px 0px 6px;
+      background-color: black;
+    }
+
+
+    div.channel {
+      flex: 1 1 100%;
+      height: 80px;
+      background-position: right;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: slideleft 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    async function interval() {
+
+      //Get constant theme data
+      let colortheme1txt = await fetch('../scoreboard/general/colortheme1.txt');
+      colortheme1txt = await colortheme1txt.text();
+      let colortheme2txt = await fetch('../scoreboard/general/colortheme2.txt');
+      colortheme2txt = await colortheme2txt.text();
+      let colortheme3txt = await fetch('../scoreboard/general/colortheme3.txt');
+      colortheme3txt = await colortheme3txt.text();
+
+      //Set theme colors
+      // $('span.replaytext').css("border-color", (colortheme3txt));
+      $('div.side span, div.center span').css("color", (colortheme2txt));
+      $('div.side span').css("background-color", (colortheme2txt));
+      $('div.center').css("text-shadow", "0px 0px 7px " + (colortheme1txt));
+      $('div.side').css("-webkit-filter", "drop-shadow(0px 0px 2px " + (colortheme1txt) + ")");
+      // -webkit-filter: drop-shadow(0 0 2px black)
+      $('div.left, div.right').css("background-color", (colortheme1txt));
+      $('.teamname, .score').css("color", (colortheme2txt));
+
+      //$('div.center').css("background-color", (colortheme1txt).replace(/\n/gi, "").replace(/\r/gi, "") + "7f");
+
+      $('div.center span').css("background-color", (colortheme1txt).replace(/\n/gi, "").replace(/\r/gi, ""));
+
+      $('span.tertiary').css("background-color", (colortheme1txt));
+      $('span.tertiary').css("color", (colortheme2txt));
+      $('span.tertiary').css("border-color", (colortheme3txt));
+
+
+
+      // $('.mapbg' + (i + 1) + ' .mapscore span').css("text-shadow", "0px 0px 10px " + (t2colorshade));
+
+      // FLAGS
+      let mapcounter = 1; // Set to 0 for Mutual Info, 1 for "Map # of #". 2 for Mutual info - Map #
+      let teamcolor = 1; // Set to 0 for default blue/red team colors, 1 to import from scoreboard
+      let allmaps = await fetch('../scoreboard/general/utility9.txt');
+      allmaps = await allmaps.text();
+      let gametype = null;
+      if (allmaps.match(/bo/gi) != null || allmaps.match(/best of/gi) != null) {
+        gametype = "bo"
+        allmaps = (allmaps).replace(/\n/gi, "").replace(/\r/gi, "").replace(/bo/gi, "").replace(/best of/gi, "")
+        allmaps = parseInt(allmaps, 10)
+      } else if (allmaps.match(/ft/gi) != null || allmaps.match(/first to/gi) != null) {
+        gametype = "ft"
+        allmaps = (allmaps).replace(/\n/gi, "").replace(/\r/gi, "").replace(/ft/gi, "").replace(/first to/gi, "")
+        allmaps = parseInt(allmaps, 10)
+      }
+
+      // CENTER TEXT
+      // Get mutual info text
+      if (mapcounter == 0) {
+        let divisionnumbertxt = await fetch('../scoreboard/match1/divisionnumber.txt');
+        divisionnumbertxt = await divisionnumbertxt.text();
+        $('.center .teamname').text(divisionnumbertxt);
+      }
+
+      // Get map count
+      if (mapcounter >= 1) {
+        let totalmap = 0;
+        let completedmap = 0;
+        for (let m = 0; m < 7; ++m) {
+          let mapwintxt = await fetch('../scoreboard/match1/m' + (m + 1) + 'mapwin.txt');
+          mapwintxt = await mapwintxt.text();
+          let mapgametypetxt = await fetch('../scoreboard/match1/m' + (m + 1) + 'mapgametype.txt');
+          mapgametypetxt = await mapgametypetxt.text();
+          if ((mapwintxt).replace(/\\/gi, "/").replace(/\"/gi, "\\\"").replace(/\n/gi, "").replace(/\r/gi, "") != "") {
+            completedmap = completedmap + 1;
+          }
+          if ((mapgametypetxt).replace(/\\/gi, "/").replace(/\"/gi, "\\\"").replace(/\n/gi, "").replace(/\r/gi, "") != "") {
+            totalmap = totalmap + 1;
+          }
+        }
+        if (mapcounter == 1) {
+          if (completedmap >= totalmap) {
+            $('.center .teamname').html("<b>Final</b> Score");
+          } else {
+            if (allmaps <= completedmap && gametype == "bo") {
+              $('.center .teamname').html("<b>Tiebreaker </b>Map");
+            } else {
+              if (gametype == "bo") {
+                $('.center .teamname').html("Map <b>" + (completedmap + 1) + "</b> of <b>" + (allmaps) + "</b>");
+              } else if (gametype == "ft") {
+                $('.center .teamname').html("Map <b>" + (completedmap + 1) + "</b> - First to <b>" + (allmaps) + "</b>");
+              } else {
+                $('.center .teamname').html("Map <b>" + (completedmap + 1) + "</b>");
+              }
+            }
+          }
+        }
+        if (mapcounter == 2) {
+          let divisionnumbertxt = await fetch('../scoreboard/match1/divisionnumber.txt');
+          divisionnumbertxt = await divisionnumbertxt.text();
+          divisionnumbertxt = divisionnumbertxt.replace(/\n/gi, "").replace(/\r/gi, "")
+          if (divisionnumbertxt == "") {
+            if (completedmap >= totalmap) {
+              $('.center .teamname').html("<b>Final</b> Score");
+            } else {
+              if (allmaps <= completedmap) {
+                $('.center .teamname').html("<b>Tiebreaker </b>Map");
+              } else {
+                $('.center .teamname').html("Map <b>" + (completedmap + 1) + "</b> of <b>" + (allmaps) + "</b>");
+              }
+            }
+          } else {
+            if (allmaps <= completedmap) {
+              $('.center .teamname').html((divisionnumbertxt) + " - <b>Tiebreaker </b>Map");
+            } else {
+              $('.center .teamname').html((divisionnumbertxt) + " - Map <b>" + (completedmap + 1) + "</b> of <b>" + (totalmap) + "</b>");
+            }
+
+          }
+        }
+      }
+
+      for (let i = 0; i < 2; ++i) {
+
+        // TEAM 1 LOGO
+        fetch("../scoreboard/match1/t" + (i + 1) + "logo.png").then((data) => {
+          return data.arrayBuffer();
+        }).then((data) => {
+          let bytes = new Uint8Array(data);
+          let str = "";
+          for (let b of bytes) {
+            str += String.fromCharCode(b);
+          }
+          if (btoa(str) != "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg==") {
+            document.querySelector(".team" + (i + 1) + " .logo").style.backgroundImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+            if (i == 0) {
+              $('div.left span.teamname').css("right", "200px");
+              $('div.left span.teamsr').css("right", "210px");
+            }
+            if (i == 1) {
+              $('div.right span.teamname').css("left", "200px");
+              $('div.right span.teamsr').css("left", "210px");
+            }
+            $('.team' + (i + 1) + ' .logo').css("display", "inherit");
+            $('.team' + (i + 1) + ' .logoshade').css("display", "inherit");
+          } else {
+            document.querySelector(".team" + (i + 1) + " .logo").style.backgroundImage = "url(data:image/jpeg;base64,)";
+            if (i == 0) {
+              $('div.left span.teamname').css("right", "80px");
+              $('div.left span.teamsr').css("right", "90px");
+            }
+            if (i == 1) {
+              $('div.right span.teamname').css("left", "80px");
+              $('div.right span.teamsr').css("left", "90px");
+            }
+            $('.team' + (i + 1) + ' .logo').css("display", "none");
+            $('.team' + (i + 1) + ' .logoshade').css("display", "none");
+          }
+          //}
+        });
+
+        // TEAM 1 NAME
+        let tnametxt = await fetch('../scoreboard/match1/t' + (i + 1) + 'name.txt');
+        tnametxt = await tnametxt.text();
+        let regex = "";
+        [
+          "gaming", "team", "e-?sports", "house", "academy", "uni(versity)?", "state", "tech", "and", "the", "of", "eu",
+        ].forEach((value) => {
+          regex += "|(" + value + ")";
+        });
+        regex = "\\b(" + regex.substring(1) + ")\\b";
+
+        let teamformatted = "<b>" + tnametxt.replace(
+            new RegExp(regex, "gi"), "</b>$1<b>")
+          .replace(/&/gi, "</b>&<b>") + "</b>";
+        $('.team' + (i + 1) + ' .teamname').html(teamformatted);
+
+        // TEAM 1 COLOR
+        if (teamcolor == 1) {
+          let tcolortxt = await fetch('../scoreboard/match1/t' + (i + 1) + 'color.txt');
+          tcolortxt = await tcolortxt.text();
+          $('.team' + (i + 1)).css("border-color", (tcolortxt));
+          $('.team' + (i + 1) + ' .logoshade').css("background-color", (tcolortxt));
+        }
+
+        // TEAM 1 SR
+        let tsrtxt = await fetch('../scoreboard/match1/t' + (i + 1) + 'sr.txt');
+        tsrtxt = await tsrtxt.text();
+        $('.team' + (i + 1) + ' .teamsr').text(tsrtxt);
+
+        // TEAM 1 SCORE
+        let tscoretxt = await fetch('../scoreboard/match1/t' + (i + 1) + 'score.txt');
+        tscoretxt = await tscoretxt.text();
+        $('.team' + (i + 1) + ' .score').text(tscoretxt);
+
+        // TEAM 1 SIDE
+        fetch("../scoreboard/match1/t" + (i + 1) + "side.png").then((data) => {
+          return data.arrayBuffer();
+        }).then((data) => {
+          let bytes = new Uint8Array(data);
+          let str = "";
+          for (let b of bytes) {
+            str += String.fromCharCode(b);
+          }
+          document.querySelector("#team" + (i + 1) + "side span").style.webkitMaskImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+        });
+      }
+      for (let g = 1; g < 2; ++g) {
+        let data = await fetch("../scoreboard/general/image" + ((g * 14) + 2) + ".png");
+        data = await data.arrayBuffer();
+        //console.log(data);
+        let bytes = new Uint8Array(data);
+        let str = "";
+        for (let b of bytes) {
+          str += String.fromCharCode(b);
+        }
+        document.querySelector(".image" + (g + 1)).style.backgroundImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+      }
+    }
+
+    $(() => {
+      interval();
+      setInterval(interval, 200);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="center">
+    <span class="teamname" id="matchtext"></span>
+  </div>
+
+  <div class="side" id="team1side"><span></span></div>
+  <div class="side" id="team2side"><span></span></div>
+
+  <div class="left team1" id="team1color">
+    <span class="logoshade" id="team1logoshade"></span>
+    <span class="logo" id="team1logo"></span>
+    <span class="teamsr" id="team1sr"></span>
+    <span class="teamname" id="team1name"></span>
+    <span class="score" id="team1score"></span>
+
+
+  </div>
+
+  <div class="right team2" id="team2color">
+    <span class="logoshade" id="team2logoshade"></span>
+    <span class="logo" id="team2logo"></span>
+    <span class="teamname" id="team2name"></span>
+    <span class="teamsr" id="team2sr"></span>
+    <span class="score" id="team2score"></span>
+
+  </div>
+
+  <div class="footer">
+    <div class="tournament image1"></div>
+    <!--<div class="tagline">
+      <div>
+        <span class="tertiary">Powered by Broadcast.gg</span></div>
+    </div>--->
+    <div class="channel image2"></div>
+  </div>
+
+</body>
+
+</html>

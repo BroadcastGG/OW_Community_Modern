@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+    /* div.templateoverlay {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+    background-image: url("templates/teamlayout.jpg");
+    opacity: 0.5;
+  } */
+
+    body {
+      width: 1920px;
+      height: 1080px;
+      margin: 0px auto;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      /*      object-position: 82% 50%; */
+    }
+
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Bold.ttf") format('TrueType');
+      font-weight: bold;
+    }
+
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Regular.ttf") format('TrueType');
+      font-weight: normal;
+    }
+
+    div {
+      -webkit-animation-timing-function: ease-out;
+    }
+
+    @-webkit-keyframes leftmove {
+
+      0% {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        left: -200px;
+      }
+
+      100% {
+        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+        left: 0px;
+      }
+
+      /* from {
+      left: -3840px;
+    }
+
+    to {
+      left: 0px;
+    } */
+    }
+
+    @keyframes topmove {
+      0% {
+        top: -150px;
+      }
+
+      100% {
+        top: 30px;
+      }
+    }
+
+    @keyframes bottommove {
+      0% {
+        top: 1080px;
+      }
+
+      100% {
+        top: 850px;
+      }
+    }
+
+    @-webkit-keyframes slideease {
+      0% {
+        left: -1820px;
+      }
+
+      50% {
+        left: 80px;
+      }
+
+      100% {
+        left: 100px;
+      }
+    }
+
+    @keyframes stingerwipe {
+      0% {
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+      }
+
+      100% {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+      }
+    }
+
+    @keyframes herowipe {
+      0% {
+        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+      }
+
+      100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+    }
+
+    @keyframes roleslide {
+      0% {
+        clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+      }
+
+      100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+    }
+
+    @keyframes bganimate1 {
+      0% {
+        left: 0px;
+      }
+
+      100% {
+        left: -2000px;
+      }
+    }
+
+    @keyframes bganimate2 {
+      0% {
+        left: 2000px;
+      }
+
+      100% {
+        left: 0px;
+      }
+    }
+
+    @keyframes slideright {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes slideleft {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    div.tournament {
+      animation: slideright 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    div.channel {
+      animation: slideleft 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    div.stingerlogo {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 1920px;
+      height: 1080px;
+      vertical-align: middle;
+      background-color: #27AAE1;
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3));
+      animation: stingerwipe 0.5s;
+      animation-fill-mode: forwards;
+      animation-delay: 1.5s;
+
+    }
+
+    div.stingerlogo span.logo {
+      width: 1720px;
+      height: 880px;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: slideease 2s;
+      animation-fill-mode: forwards;
+      animation-delay: 0s;
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0, 1);
+      /* -webkit-filter: drop-shadow(0 0 8px black); */
+    }
+
+    div.altcolor {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 1920px;
+      height: 1080px;
+      vertical-align: middle;
+      background-color: white;
+      animation: stingerwipe 0.5s;
+      animation-fill-mode: forwards;
+      animation-delay: 1.55s;
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3));
+    }
+
+    div.top {
+      animation: topmove 1.34s;
+      animation-fill-mode: backwards;
+      animation-delay: 0.5s;
+    }
+
+    div.hero1 {
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.0s;
+    }
+
+    div.hero2 {
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.2s;
+    }
+
+    div.hero3 {
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.4s;
+    }
+
+    div.hero4 {
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.6s;
+    }
+
+    div.hero5 {
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.8s;
+    }
+
+
+    div.hero1,
+    div.hero2,
+    div.hero3,
+    div.hero4,
+    div.hero5
+    {
+      width: 453px;
+      height: 254px;
+      left: 0px;
+      top: 100px;
+      /* border-style: solid;
+    border-width: 0px 0px 0px 10px;
+    border-color: green; */
+      vertical-align: middle;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    div.bglogo {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 1920px;
+      height: 1080px;
+      background-size: 100% auto;
+      background-repeat: repeat-x;
+      background-position: center;
+      /* -webkit-filter: drop-shadow(0 0 40px black) grayscale(100%); */
+      opacity: 0.2;
+    }
+
+    div.bglogo1 {
+      animation: bganimate1 60s linear infinite;
+    }
+
+    div.bglogo2 {
+      animation: bganimate2 60s linear infinite;
+    }
+
+
+    div.top {
+      position: absolute;
+      top: 30px;
+      left: 230px;
+      width: 1453px;
+      height: 132px;
+      background-color: #000000;
+      border-style: solid;
+      border-width: 0px 0px 0px 7px;
+      border-color: #333333 #333333 #333333 #8cba11;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+
+      /* transform: skewX(-15deg); */
+    }
+
+
+    div.top span.logo {
+      width: 132px;
+      height: 112px;
+      position: absolute;
+      top: 10px;
+      left: 30px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      /* -webkit-filter: drop-shadow(0 0 5px black); */
+      clip-path: polygon(-10% 0, 110% 0%, 110% 100%, -10% 100%);
+
+      /* transform: skewX(15deg); */
+    }
+
+    span.teamname {
+      margin: 0;
+      position: absolute;
+      top: 17px;
+      left: 200px;
+      font-family: 'Rajdhani';
+      text-transform: uppercase;
+      /* text-shadow: 0px 0px 15px #000000; */
+      font-size: 5em;
+      /* transform: skewX(-15deg); */
+    }
+
+    div.bottom {
+      position: absolute;
+      top: 464px;
+      left: -9px;
+      width: 100%;
+      height: 230px;
+      /* background-color: #27AAE1;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3)); */
+      vertical-align: middle;
+      /* transform: skewX(-15deg); */
+    }
+
+    div.bottom div.player div.playertype div.rolecolor {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 80px;
+      height: 80px;
+      background-color: black;
+
+      -webkit-mask-position: center;
+      -webkit-mask-size: 60%;
+      -webkit-mask-repeat: no-repeat;
+    }
+
+    div.rolecolor {
+      /* transform: skewX(15deg); */
+    }
+
+    div.bottom div {
+      width: 447px;
+      height: 74px;
+      text-align: left;
+      margin: 0;
+      font-family: 'Rajdhani';
+      font-weight: bold;
+      font-variant-ligatures: none;
+      text-transform: uppercase;
+      /* text-shadow: 0px 0px 7px #000000; */
+      font-size: 2.5em;
+      position: absolute;
+      /*      transform: translate(-50%, 0%); */
+    }
+
+    div.bottom div span.battletag {
+      position: absolute;
+      left: 15px;
+      top: 13px;
+    }
+
+    div.bottom div span.fullname {
+      position: absolute;
+      right: 15px;
+      top: 20px;
+      font-weight: normal;
+      font-size: 0.7em;
+    }
+
+    div.bottom div.player {
+      background-color: #000000;
+      border-style: solid;
+      border-width: 0px 0px 0px 7px;
+      border-color: #333333 #333333 #333333 #8cba11;
+    }
+
+    div.bottom div.player1 {
+      left: 239px;
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.1s;
+    }
+
+    div.bottom div.player2 {
+      left: 743px;
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.3s;
+    }
+
+    div.bottom div.player3 {
+      left: 1247px;
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.5s;
+    }
+
+    div.bottom div.player4 {
+      left: 491px;
+      top: 411px;
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.7s;
+    }
+
+    div.bottom div.player5 {
+      left: 995px;
+      top: 411px;
+      animation: herowipe 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.9s;
+    }
+
+    div.bottom div.player div.playertype {
+      width: 80px;
+      height: 80px;
+      /* background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat; */
+      transform: translate(359px, -103px);
+      /* -webkit-filter: drop-shadow(0 0 3px black); */
+      animation: roleslide 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2.5s;
+      background-color: #000000;
+      border-style: solid;
+      border-width: 0px 0px 0px 7px;
+      border-color: #333333 #333333 #333333 #8cba11;
+    }
+
+    div.heroes {
+      /* transform: skewX(-15deg); */
+      position: relative;
+      left: -9px;
+    }
+
+    div.hero {
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+      /* border-style: solid;
+    border-width: 0px 0px 0px 7px;
+    border-color: #333333 #333333 #333333 #8cba11; */
+    }
+
+    img {
+      /* transform: skewX(15deg); */
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    div.hero1 {
+      transform: translate(239px, 87px);
+    }
+
+    div.hero2 {
+      transform: translate(743px, 87px);
+    }
+
+    div.hero3 {
+      transform: translate(1247px, 87px);
+    }
+
+    div.hero4 {
+      transform: translate(491px, 498px);
+    }
+
+    div.hero5 {
+      transform: translate(995px, 498px);
+    }
+
+    div.footer {
+      position: absolute;
+      left: 0px;
+      top: 950px;
+      width: 1870px;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: row;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+      padding: 25px;
+    }
+
+    div.tournament {
+      flex: 1 1 0;
+      height: 80px;
+      background-position: left;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    div.channel {
+      flex: 1 1 0;
+      height: 80px;
+      background-position: right;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    @keyframes tagline {
+      0% {
+        clip-path: polygon(0% -100%, 0 -100%, 0% 200%, 0% 200%);
+        transform: translateX(50%)
+          /* skewX(-15deg) */
+        ;
+      }
+
+      100% {
+        clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+        transform: translateX(0%)
+          /* skewX(-15deg) */
+        ;
+      }
+    }
+
+    div.tagline {
+      min-width: 375px;
+      animation: tagline .5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2s;
+      /* transform: skewX(-15deg); */
+    }
+
+    span.tertiary {
+      font-size: 1.8em;
+      border-style: solid;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Rajdhani';
+      text-transform: uppercase;
+      padding: 3px 15px 2px 15px;
+      border-width: 0px 6px 0px 6px;
+      background-color: black;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    async function interval() {
+      // SET team to 1 for left, 2 for right.
+      let team = 2;
+
+      let colortheme1txt = await fetch('../scoreboard/general/colortheme1.txt');
+      colortheme1txt = await colortheme1txt.text();
+      let colortheme2txt = await fetch('../scoreboard/general/colortheme2.txt');
+      colortheme2txt = await colortheme2txt.text();
+      let colortheme3txt = await fetch('../scoreboard/general/colortheme3.txt');
+      colortheme3txt = await colortheme3txt.text();
+
+      $('body').css("border-color", (colortheme3txt));
+      $('span.fullname').css("color", (colortheme3txt));
+      $('div.top, div.player').css("color", (colortheme2txt));
+      $('div.player, div.playertype, div.top').css("background-color", (colortheme1txt));
+      $('div.rolecolor').css("background-color", (colortheme2txt));
+
+      $('span.tertiary').css("background-color", (colortheme1txt));
+      $('span.tertiary').css("color", (colortheme2txt));
+      $('span.tertiary').css("border-color", (colortheme3txt));
+
+      fetch("../scoreboard/match1/t" + team + "logo.png").then((data) => {
+        //console.log(data);
+        return data.arrayBuffer();
+      }).then((data) => {
+        //console.log(data);
+        let bytes = new Uint8Array(data);
+        let str = "";
+        for (let b of bytes) {
+          str += String.fromCharCode(b);
+        }
+        //console.log(str);
+        //console.log(btoa(str));
+        document.querySelector(".teamlogo").style.backgroundImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+        if (btoa(str) != "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg==") {
+          $('.teamname').css("left", "200px");
+          $('.teamlogo').css("display", "inherit");
+        } else {
+          $('.teamname').css("left", "30px");
+          $('.teamlogo').css("display", "none");
+        }
+      });
+
+      // TEAM NAME
+      let t1nametxt = await fetch('../scoreboard/match1/t' + team + 'name.txt');
+      t1nametxt = await t1nametxt.text();
+      let regex = "";
+      [
+        "gaming", "team", "e-?sports", "house", "academy", "uni(versity)?", "state", "tech", "and", "the", "of", "eu",
+      ].forEach((value) => {
+        regex += "|(" + value + ")";
+      });
+      regex = "\\b(" + regex.substring(1) + ")\\b";
+
+      let teamformatted = "<div><b>" + t1nametxt.replace(
+          new RegExp(regex, "gi"), "</b>$1<b>")
+        .replace(/&/gi, "</b>&<b>") + "</b></div>";
+      $('.teamname').html(teamformatted);
+
+      let t1colortxt = await fetch('../scoreboard/match1/t' + team + 'color.txt');
+      t1colortxt = await t1colortxt.text();
+      $('div').css("border-color", (t1colortxt));
+
+      for (let i = 0; i < 6; ++i) {
+        // TEAM HERO imgS
+        let t1p1herotxt = await fetch('../scoreboard/match1/t' + team + 'p' + (i + 1) + 'hero.txt');
+        t1p1herotxt = await t1p1herotxt.text();
+        // let img = "assets/heroes/portraits3dcrop/" + (t1p1herotxt).replace("\u00fa", "u").replace("\u00f6", "o").replace(":", "") + ".png";
+
+        fetch('../scoreboard/match1/t' + team + 'p' + (i + 1) + 'image.png').then((data) => {
+          //console.log(data);
+          return data.arrayBuffer();
+        }).then((data) => {
+          //console.log(data);
+          let bytes = new Uint8Array(data);
+          let str = "";
+          for (let b of bytes) {
+            str += String.fromCharCode(b);
+          }
+          //console.log(str);
+          //console.log(btoa(str));
+          if (btoa(str) == "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg==") {
+            fetch('../scoreboard/match1/t' + team + 'p' + (i + 1) + 'hero.png').then((data) => {
+              //console.log(data);
+              return data.arrayBuffer();
+            }).then((data) => {
+              //console.log(data);
+              let bytes = new Uint8Array(data);
+              let str = "";
+              for (let b of bytes) {
+                str += String.fromCharCode(b);
+              }
+              //console.log(str);
+              //console.log(btoa(str));
+              let img = "data:image/jpeg;base64," + btoa(str);
+              let node = $("#teamplayer" + (i + 1) + "hero img");
+              if (node.attr("src") != img) {
+                node.attr("src", img);
+
+              }
+            });
+          } else {
+            let img = "data:image/jpeg;base64," + btoa(str);
+            let node = $("#teamplayer" + (i + 1) + "hero img");
+            if (node.attr("src") != img) {
+              node.attr("src", img);
+            }
+          }
+        });
+
+        // TEAM ROLES
+        let t1p1roletxt = await fetch('../scoreboard/match1/t' + team + 'p' + (i + 1) + 'role.txt');
+        t1p1roletxt = await t1p1roletxt.text();
+        let t1p6infotxt = await fetch('../scoreboard/match1/t' + team + 'p' + (i + 1) + 'info.txt');
+        t1p6infotxt = await t1p6infotxt.text();
+        $("#teamplayer" + (i + 1) + "role div.rolecolor").css("-webkit-mask-image", "url(\"../scoreboard/roles/" + (t1p1roletxt).replace(/\\/gi, "/").replace(/\"/gi, "\\\"").replace(/\n/gi, "").replace(/\r/gi, "") + ".png\")");
+        let check2 = (t1p6infotxt).replace(/\n/gi, "").replace(/\r/gi, "");
+        let unformat2 = (t1p6infotxt)
+        let node2 = $("#teamplayer" + (i + 1) + "name");
+        if (check2 != "") {
+          node2.text(unformat2);
+        } else {
+          node2.text(t1p1roletxt);
+        }
+
+
+        // TEAM PLAYER NAMES
+        let t1p6nametxt = await fetch('../scoreboard/match1/t' + team + 'p' + (i + 1) + 'name.txt');
+        t1p6nametxt = await t1p6nametxt.text();
+        // $("#teamplayer6battletag").text(t1p6nametxt);
+        let check = (t1p6nametxt).replace(/\n/gi, "").replace(/\r/gi, "");
+        let unformat = (t1p6nametxt)
+        let node1 = $("#teamplayer" + (i + 1) + "battletag");
+        if (check != "") {
+          node1.text(unformat);
+        } else {
+          node1.text("empty");
+        }
+
+
+      }
+      for (let g = 0; g < 2; ++g) {
+        let data = await fetch("../scoreboard/general/image" + ((g * 14) + 1) + ".png");
+        data = await data.arrayBuffer();
+        //console.log(data);
+        let bytes = new Uint8Array(data);
+        let str = "";
+        for (let b of bytes) {
+          str += String.fromCharCode(b);
+        }
+        document.querySelector(".image" + (g + 1)).style.backgroundImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+      }
+    }
+
+    $(() => {
+      interval();
+      setInterval(interval, 1000);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="heroes">
+    <div class="hero1" id="teamplayer1hero">
+      <div class="hero"><img></img></div>
+    </div>
+    <div class="hero2" id="teamplayer2hero">
+      <div class="hero"><img></img></div>
+    </div>
+    <div class="hero3" id="teamplayer3hero">
+      <div class="hero"><img></img></div>
+    </div>
+    <div class="hero4" id="teamplayer4hero">
+      <div class="hero"><img></img></div>
+    </div>
+    <div class="hero5" id="teamplayer5hero">
+      <div class="hero"><img></img></div>
+    </div>
+  </div>
+
+  <div class="top" id="teamcolor">
+    <span class="logo teamlogo"></span>
+    <span class="teamname" id="teamname"></span>
+    <span class="org"></span>
+  </div>
+
+  <div class="bottom" id="teamcolorbottom">
+    <div class="player player1">
+      <div class="playertype" id="teamplayer1role">
+        <div class="rolecolor"></div>
+      </div>
+      <span class="battletag" id="teamplayer1battletag"></span>
+      <span class="fullname" id="teamplayer1name"></span>
+    </div>
+    <div class="player player2">
+      <div class="playertype" id="teamplayer2role">
+        <div class="rolecolor"></div>
+      </div>
+      <span class="battletag" id="teamplayer2battletag"></span>
+      <span class="fullname" id="teamplayer2name"></span>
+    </div>
+    <div class="player player3">
+      <div class="playertype" id="teamplayer3role">
+        <div class="rolecolor"></div>
+      </div>
+      <span class="battletag" id="teamplayer3battletag"></span>
+      <span class="fullname" id="teamplayer3name"></span>
+    </div>
+    <div class="player player4">
+      <div class="playertype" id="teamplayer4role">
+        <div class="rolecolor"></div>
+      </div>
+      <span class="battletag" id="teamplayer4battletag"></span>
+      <span class="fullname" id="teamplayer4name"></span>
+    </div>
+    <div class="player player5">
+      <div class="playertype" id="teamplayer5role">
+        <div class="rolecolor"></div>
+      </div>
+      <span class="battletag" id="teamplayer5battletag"></span>
+      <span class="fullname" id="teamplayer5name"></span>
+    </div>
+  </div>
+</body>

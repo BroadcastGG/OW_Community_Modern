@@ -1,0 +1,179 @@
+<head>
+  <style>
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Bold.ttf") format('TrueType');
+      font-weight: bold;
+    }
+
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Regular.ttf") format('TrueType');
+      font-weight: normal;
+    }
+
+    @-webkit-keyframes leftmove {
+      from {
+        transform: translate(50%, 0%) /* skewX(-15deg); */
+        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+      }
+
+      to {
+        transform: translate(0%, 0%) /* skewX(-15deg); */
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+    }
+
+    @-webkit-keyframes leftmoveimg {
+      from {
+        transform: translate(50%, 0%);
+        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+      }
+
+      to {
+        transform: translate(0%, 0%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      }
+    }
+
+    body {
+      margin: 0px auto;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    video {
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+    }
+
+    div.replay {
+      width: 100%;
+      height: 100%;
+    }
+
+    div.replaytext {
+      position: absolute;
+      top: 210px;
+      left: 30px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+
+      /* text-shadow: 0px 0px 15px #000000; */
+      font-size: 3em;
+
+
+
+    }
+
+    div.replaytext span {
+      margin: 20px;
+      position: relative;
+      top: 1px;
+    }
+
+    div.replaytext div {
+      background-color: #000000;
+      border-style: solid;
+      border-width: 0px 0px 0px 7px;
+      border-color: #8cba11;
+      font-family: 'Rajdhani';
+      font-weight: bold;
+      padding: 5px;
+      text-transform: uppercase;
+      color: white;
+      /* transform: skewX(-15deg); */
+
+      animation: leftmove 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.5s;
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0, 1);
+    }
+
+    img {
+      max-width: 150px;
+      padding-bottom: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      animation: leftmoveimg 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.5s;
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0, 1);
+    }
+  </style>
+  <script src="scripts/jquery/jquery-3.3.1.min.js"></script>
+  <script>
+    async function interval() {
+      //Get constant theme data
+      let colortheme1txt = await fetch('../scoreboard/general/colortheme1.txt');
+      colortheme1txt = await colortheme1txt.text();
+      let colortheme2txt = await fetch('../scoreboard/general/colortheme2.txt');
+      colortheme2txt = await colortheme2txt.text();
+      let colortheme3txt = await fetch('../scoreboard/general/colortheme3.txt');
+      colortheme3txt = await colortheme3txt.text();
+
+      //Set theme colors
+      $('div.replaytext div').css("border-color", (colortheme3txt));
+      $('div.replaytext div').css("color", (colortheme2txt));
+      $('div.replaytext div').css("background-color", (colortheme1txt));
+
+      let replaysrc = await fetch('../scoreboard/replay/replaypath.txt');
+      replaysrc = await replaysrc.text();
+      let video = "../scoreboard/replay/playlist/" + (replaysrc).replace("\u00fa", "u").replace("\u00f6", "o").replace(":", "");
+      let node1 = $(".replay1 video");
+      let node2 = $(".replay2 video");
+      if (flip == 1) {
+        if (node2.attr("src") != video) {
+          node1.attr("src", video);
+          setTimeout(function() {
+            node1.css("display", "block");
+            node2.css("display", "none");
+          }, 250);
+          flip = 2;
+        }
+      } else if (flip == 2) {
+        if (node1.attr("src") != video) {
+          node2.attr("src", video);
+          setTimeout(function() {
+            node2.css("display", "block");
+            node1.css("display", "none");
+          }, 250);
+          flip = 1;
+        }
+      }
+
+      let data = await fetch("../scoreboard/general/image2.png");
+      data = await data.arrayBuffer();
+      //console.log(data);
+      let bytes = new Uint8Array(data);
+      let str = "";
+      for (let b of bytes) {
+        str += String.fromCharCode(b);
+      }
+
+      console.log(btoa(str));
+      $(".logo").attr("src", "data:image/jpeg;base64," + btoa(str));
+    }
+
+    $(() => {
+      flip = 1
+      interval();
+      setInterval(interval, 1000);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="replay1"><video autoplay muted loop></video></div>
+  <div class="replay2"><video autoplay muted loop></video></div>
+  <div class="replaytext"><img class="logo"></img>
+    <div><span>replay</span></div>
+  </div>
+</body>

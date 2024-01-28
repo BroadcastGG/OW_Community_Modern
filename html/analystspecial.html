@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+    /* .skew {
+      transform: skewX(-15deg);
+    }
+
+    .askew {
+      transform: skewX(15deg);
+    } */
+
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Bold.ttf") format('TrueType');
+      font-weight: bold;
+    }
+
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Regular.ttf") format('TrueType');
+      font-weight: normal;
+    }
+
+    @font-face {
+      font-family: 'FontAwesome';
+      src: url("fonts/Font Awesome/Font Awesome 5 Brands-Regular-400.otf") format('OpenType');
+    }
+
+    @keyframes staffanimate {
+      0% {
+        clip-path: polygon(0% -100%, 0 -100%, 0% 200%, 0% 200%);
+        transform: translateX(50%);
+      }
+
+      100% {
+        clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+        transform: translateX(0%);
+      }
+    }
+
+    @keyframes curtainanimate-r {
+      0% {
+        clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+      }
+
+      100% {
+        clip-path: polygon(100% -100%, 100% -100%, 100% 200%, 100% 200%);
+      }
+    }
+
+    @keyframes curtainanimate-l {
+      0% {
+        clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+      }
+
+      100% {
+        clip-path: polygon(0% -100%, 0 -100%, 0% 200%, 0% 200%);
+      }
+    }
+
+    @keyframes slideright {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes slideleft {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes teamslideright {
+      0% {
+        clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+        transform: translateX(-100%);
+      }
+
+      100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes teamslideleft {
+      0% {
+        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+        transform: translateX(100%);
+      }
+
+      100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transform: translateX(0px);
+      }
+    }
+
+    body {
+      font-family: 'Rajdhani';
+      font-weight: bold;
+      text-transform: uppercase;
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0, 1);
+    }
+
+    body {
+      width: 1920px;
+      height: 1080px;
+      margin: 0px auto;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    .camerabox {
+      display: flex;
+      flex-direction: column;
+      border-style: solid;
+      border-width: 0px 6px 0px 6px;
+      border-color: #8cba11;
+      margin: 21px;
+    }
+
+    .staffiso,
+    .curtain {
+      background-color: #8cba11;
+    }
+
+    .curtain {
+      flex: 1 1 0;
+      height: 100%;
+      background-color: #8cba11;
+    }
+
+    .curtainl {
+      animation: curtainanimate-l 0.5s;
+    }
+
+    .curtainr {
+      animation: curtainanimate-r 0.5s;
+    }
+
+    .curtainl,
+    .curtainr {
+      animation-fill-mode: forwards;
+      animation-delay: 10s;
+    }
+
+    .camerahole {
+      display: flex;
+      flex-direction: row;
+      width: 640px;
+      height: 360px;
+    }
+
+    .leftcolumn .camerahole {
+      width: 480px;
+      height: 270px;
+    }
+
+    .rightcolumn .camerahole {
+      width: 1136px;
+      height: 639px;
+    }
+
+    .leftcolumn .staff {
+      font-size: 0.85em;
+      padding: 6px 0px 6px 0px;
+    }
+
+    .wrapper {
+      position: absolute;
+      left: 0px;
+      top: 100px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 1920px;
+      height: 880px;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .staff {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: staffanimate 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 10s;
+    }
+
+    .staffname {
+      font-family: 'Rajdhani';
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 2.5em;
+      position: relative;
+    }
+
+    .twitter {
+      font-family: 'Rajdhani';
+      font-weight: normal;
+      text-transform: none;
+      font-size: 2em;
+      position: relative;
+
+    }
+
+    .twitter:before {
+      font-family: 'FontAwesome';
+      content: "\f099"
+        /* twitter logo */
+        /* content:"\f1e8" twitch logo*/
+    }
+
+    .scoreboardwrapper {
+      position: absolute;
+      left: 0px;
+      /* top: 100px; */
+      top: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 1920px;
+      height: 100px;
+    }
+
+    .scoreboard {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 1620px;
+      height: 100px;
+    }
+
+    .scoreboard .vs {
+      flex: 0 0 0;
+      background-color: #8cba11;
+      height: 100px;
+      min-width: 150px;
+      max-width: 150px;
+    }
+
+    .scoreboard .vs span {
+      font-family: 'Rajdhani';
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 5em;
+      position: relative;
+
+    }
+
+    .team {
+      flex: 1 1 0;
+      height: 100px;
+      background-color: #000000;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      border-style: solid;
+      border-color: #8cba11;
+    }
+
+    .team1 {
+      border-width: 0px 0px 0px 6px;
+      animation: teamslideleft 0.5s;
+      animation-delay: 1s;
+      animation-fill-mode: backwards;
+    }
+
+    .team2 {
+      border-width: 0px 6px 0px 0px;
+      animation: teamslideright 0.5s;
+      animation-delay: 1s;
+      animation-fill-mode: backwards;
+    }
+
+    .teamname {
+      flex: 5 1 0;
+      font-family: 'Rajdhani';
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: 3em;
+      position: relative;
+
+    }
+
+    .teamscore {
+      font-family: 'Rajdhani';
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 5em;
+      position: relative;
+
+    }
+
+    .scorebox {
+      flex: 1 1 0;
+      top: 0px;
+      height: 100px;
+      max-width: 105px;
+    }
+
+    img {
+      height: 80px;
+      width: 80px;
+      max-height: 80px;
+      max-width: 80px;
+      margin: 10px;
+      object-fit: contain;
+      overflow: hidden;
+    }
+
+    .footer {
+      position: fixed;
+      left: 0px;
+      top: 950px;
+      width: 1870px;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: row;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+      padding: 25px;
+    }
+
+    .tournament {
+      flex: 1 1 0;
+      height: 80px;
+      background-position: left;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: slideright 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    .channel {
+      flex: 1 1 0;
+      height: 80px;
+      background-position: right;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: slideleft 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes tagline {
+      0% {
+        clip-path: polygon(0% -100%, 0 -100%, 0% 200%, 0% 200%);
+        transform: translateX(50%)
+          /* skewX(-15deg) */
+        ;
+      }
+
+      100% {
+        clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+        transform: translateX(0%)
+          /* skewX(-15deg) */
+        ;
+      }
+    }
+
+    div.tagline {
+      min-width: 375px;
+      animation: tagline .5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2s;
+      /* transform: skewX(-15deg); */
+    }
+
+    span.tertiary {
+      font-size: 1.8em;
+      border-style: solid;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Rajdhani';
+      padding: 3px 15px 2px 15px;
+      border-width: 0px 6px 0px 6px;
+      background-color: black;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    async function interval() {
+      //Set to 1 for video functions, 0 to disable
+      let blankimage = "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg=="
+      //Get constant theme data
+      let colortheme1txt = await fetch('../scoreboard/general/colortheme1.txt');
+      colortheme1txt = await colortheme1txt.text();
+      let colortheme2txt = await fetch('../scoreboard/general/colortheme2.txt');
+      colortheme2txt = await colortheme2txt.text();
+      let colortheme3txt = await fetch('../scoreboard/general/colortheme3.txt');
+      colortheme3txt = await colortheme3txt.text();
+      let colortheme4txt = await fetch('../scoreboard/general/colortheme4.txt');
+      colortheme4txt = await colortheme4txt.text();
+
+      $('body').css("border-color", (colortheme3txt));
+      $('.camerabox').css("border-color", (colortheme3txt));
+      $('.staffname, .team').css("color", colortheme2txt);
+      $('.twitter, .teamscore').css("color", colortheme3txt);
+      $('.staff, .team').css("background-color", colortheme1txt);
+      $('.curtain, .staffiso').css("background-color", colortheme3txt);
+      $('.vs').css("background-color", colortheme3txt);
+      $('.vs').css("color", colortheme1txt);
+      $('.scorebox').css("background-color", colortheme4txt);
+
+      $('span.tertiary').css("background-color", (colortheme1txt));
+      $('span.tertiary').css("color", (colortheme2txt));
+      $('span.tertiary').css("border-color", (colortheme3txt));
+      //$('.camerahole').css("background-color", (colortheme3txt));
+
+      //set the staff in the scene
+      var staff = [
+        "host", //Host
+        "caster1", "caster2", //Casters
+        //"analyst1", "analyst2" //Analysts
+      ];
+
+      //get staff name details
+      for (let i = 0; i < staff.length; ++i) {
+        let stafftxt = await fetch('../scoreboard/general/' + staff[i] + '.txt');
+        stafftxt = await stafftxt.text();
+
+        $('.curtain' + staff[i]).css("animation-delay", (1.15 + (i * 0.1)) + "s");
+        $('.' + staff[i]).css("animation-delay", (1.00 + (i * 0.1)) + "s");
+
+        if (stafftxt.replace(/\n|\r/gi, "") == "") {
+          $('.' + staff[i] + ' .staffname').html("");
+          $('.' + staff[i] + ' .twitter').html("");
+        } else {
+          let staffname = stafftxt.replace(new RegExp(/ @\w*/), "");
+
+          let stafftwitter = stafftxt.match(new RegExp(/ @\w*/))
+          console.log("stafftwitter value: " + stafftwitter + ".")
+          if (stafftwitter != null) {
+            stafftwitter = stafftwitter.toString()
+            stafftwitter = stafftwitter.replace(/ @/, "")
+
+            $('.' + staff[i] + ' .twitter').html("&nbsp;" + stafftwitter);
+            $('.' + staff[i] + ' .twitter').css("display", "block");
+            $('.' + staff[i] + ' .staffname').html(staffname + "&nbsp;");
+          } else {
+            $('.' + staff[i] + ' .twitter').css("display", "none");
+            $('.' + staff[i] + ' .staffname').html(staffname);
+          }
+        }
+      }
+
+      //get team data
+      class team {}
+      for (let t = 0; t < 2; ++t) {
+        let teamcls = new team()
+        teamcls.name = await fetch('../scoreboard/match1/t' + (t + 1) + 'name.txt');
+        teamcls.name = await teamcls.name.text();
+        teamcls.color = await fetch('../scoreboard/match1/t' + (t + 1) + 'color.txt');
+        teamcls.color = await teamcls.color.text();
+        teamcls.score = await fetch('../scoreboard/match1/t' + (t + 1) + 'score.txt');
+        teamcls.score = await teamcls.score.text();
+        let data = await fetch("../scoreboard/match1/t" + (t + 1) + "logo.png");
+        data = await data.arrayBuffer();
+        //console.log(data);
+        let bytes = new Uint8Array(data);
+        let str = "";
+        for (let b of bytes) {
+          str += String.fromCharCode(b);
+        }
+        teamcls.logo = btoa(str);
+        team[t] = teamcls;
+        //console.log(str);
+        //console.log(btoa(str));
+        //if (btoa(str) != "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg==") {
+        if (team[t].logo != "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg==") {
+          $('.teamlogo' + (t + 1)).css("display", "inherit");
+        } else {
+          $('.teamlogo' + (t + 1)).css("display", "none");
+        }
+
+        $(".teamlogo" + (t + 1)).attr("src", "data:image/jpeg;base64," + team[t].logo);
+        $('.team' + (t + 1)).css("border-color", team[t].color);
+
+        let regex = "";
+        [
+          "gaming", "team", "e-?sports", "house", "academy", "uni(versity)?", "state", "tech", "and", "the", "of", "eu",
+        ].forEach((value) => {
+          regex += "|(" + value + ")";
+        });
+        regex = "\\b(" + regex.substring(1) + ")\\b";
+
+        let teamformatted = "<b>" + team[t].name.replace(
+            new RegExp(regex, "gi"), "</b>$1<b>")
+          .replace(/&/gi, "</b>&<b>") + "</b>";
+        $('.teamname' + (t + 1)).html(teamformatted);
+        $('.teamscore' + (t + 1)).text(team[t].score);
+      }
+
+      if (team[0].score == 0 && team[1].score == 0) {
+        $('.scorebox').css("display", "none");
+      } else {
+        $('.scorebox').css("display", "block");
+      }
+
+      for (let g = 0; g < 2; ++g) {
+        let data = await fetch("../scoreboard/general/image" + ((g * 14) + 1) + ".png");
+        data = await data.arrayBuffer();
+        //console.log(data);
+        let bytes = new Uint8Array(data);
+        let str = "";
+        for (let b of bytes) {
+          str += String.fromCharCode(b);
+        }
+        document.querySelector(".image" + (g + 1)).style.backgroundImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+      }
+
+    }
+
+    $(() => {
+      interval();
+      setInterval(interval, 1000);
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <div class="scoreboardwrapper skew">
+    <div class="scoreboard">
+      <div class="team team1">
+        <img class="teamlogo teamlogo1 askew"></img>
+        <span class="teamname teamname1"></span>
+        <div class="scorebox">
+          <span class="teamscore teamscore1"></span>
+        </div>
+      </div>
+      <div class="vs"><span>VS</span></div>
+      <div class="team team2">
+        <div class="scorebox">
+          <span class="teamscore teamscore2"></span>
+        </div>
+        <span class="teamname teamname2"></span>
+        <img class="teamlogo teamlogo2 askew"></img>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="leftcolumn column">
+      <div class="camerabox boxcaster1">
+        <div class="camerahole holecaster1">
+          <div class="curtain curtainl curtaincaster1"></div>
+          <div class="curtain curtainr curtaincaster1"></div>
+        </div>
+        <div class="staffiso">
+          <div class="staff caster1">
+            <span class="staffname"></span>
+            <span class="twitter"></span>
+          </div>
+        </div>
+      </div>
+      <div class="camerabox boxcaster2">
+        <div class="camerahole holecaster2">
+          <div class="curtain curtainl curtaincaster2"></div>
+          <div class="curtain curtainr curtaincaster2"></div>
+        </div>
+        <div class="staffiso">
+          <div class="staff caster2">
+            <span class="staffname"></span>
+            <span class="twitter"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rightcolumn column">
+      <div class="camerabox boxhost">
+        <div class="camerahole holehost">
+          <div class="curtain curtainl curtainhost"></div>
+          <div class="curtain curtainr curtainhost"></div>
+        </div>
+        <div class="staffiso">
+          <div class="staff host">
+            <span class="staffname"></span>
+            <span class="twitter"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="tournament image1"></div>
+    <div class="tagline">
+      <div>
+        <span class="tertiary">Powered by Broadcast.gg</span></div>
+    </div>
+    <div class="channel image2"></div>
+  </div>
+</body>

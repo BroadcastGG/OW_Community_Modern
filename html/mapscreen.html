@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Bold.ttf") format('TrueType');
+      font-weight: bold;
+    }
+
+    @font-face {
+      font-family: 'Rajdhani';
+      src: url("fonts/Rajdhani/Rajdhani-Regular.ttf") format('TrueType');
+      font-weight: normal;
+    }
+
+    @keyframes slideup {
+      0% {
+        clip-path: polygon(50% 0, 50% 0%, 50% 100%, 50% 100%);
+        transform: translateX(-50%);
+      }
+
+      100% {
+        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes wrapperanimate {
+      0% {
+        transform: translate(50%, 50%) /* skewX(-15deg) */;
+        clip-path: polygon(0% 0, 0 0%, 0% 152px, 0% 152px);
+      }
+
+      50% {
+        transform: translate(0%, 50%) /* skewX(-15deg) */;
+        clip-path: polygon(0% 0, 100% 0%, 100% 152px, 0% 152px);
+      }
+
+      100% {
+        transform: translateY(0%, 0%) /* skewX(-15deg) */;
+        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+      }
+    }
+
+    @keyframes slideright {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes slideleft {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    div.tournament {
+      animation: slideright 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    div.channel {
+      animation: slideleft 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    div.wrapper {
+      animation: wrapperanimate 1.0s;
+      animation-fill-mode: backwards;
+      animation-delay: 0.5s;
+    }
+
+    div.mapwrap1,
+    div.mapinfo1 {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.0s;
+    }
+
+    div.mapwrap2,
+    div.mapinfo2 {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.2s;
+    }
+
+    div.mapwrap3,
+    div.mapinfo3 {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.4s;
+    }
+
+    div.mapwrap4,
+    div.mapinfo4 {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.6s;
+    }
+
+    div.mapwrap5,
+    div.mapinfo5 {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.8s;
+    }
+
+    div.mapwrap6,
+    div.mapinfo6 {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2.0s;
+    }
+
+    div.mapwrap7,
+    div.mapinfo7 {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2.2s;
+    }
+
+    div.mapbg1 div.mapscore {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.2s;
+    }
+
+    div.mapbg2 div.mapscore {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.4s;
+    }
+
+    div.mapbg3 div.mapscore {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.6s;
+    }
+
+    div.mapbg4 div.mapscore {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.8s;
+    }
+
+    div.mapbg5 div.mapscore {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2.0s;
+    }
+
+    div.mapbg6 div.mapscore {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2.2s;
+    }
+
+    div.mapbg7 div.mapscore {
+      animation: slideup 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2.4s;
+    }
+
+    body {
+      width: 1920px;
+      height: 1080px;
+      margin: 0px auto;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    div {
+      text-align: center;
+      vertical-align: middle;
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0, 1);
+    }
+
+    span {
+      text-align: center;
+      vertical-align: middle;
+      font-family: 'Rajdhani';
+      text-transform: uppercase;
+      /* text-shadow: 0px 0px 15px #000000; */
+      font-weight: bold;
+      font-size: 1.95em;
+    }
+
+    div.wrapper {
+
+      position: fixed;
+      left: 247px;
+      top: 94px;
+      width: 1398px;
+      height: 828px;
+      background-color: #000000;
+      border-style: solid;
+      border-width: 0px 6px 0px 6px;
+      border-color: #8cba11;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    div.scoreboard {
+      height: 152px;
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+    }
+
+    div.scoreboard span {
+      font-size: 6em;
+      font-family: 'Rajdhani';
+      position: relative;
+      top: -5px;
+    }
+
+    div.mapgroup {
+      display: flex;
+      flex-direction: row;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+      flex: 1;
+      height: 493px;
+    }
+
+    div.mapbg {
+      width: 100%;
+      height: 493px;
+      background-color:
+        /* #8cba11 */
+        black;
+      min-width: 100%;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    div.textgroup {
+      width: 100%;
+      height: 183px;
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: column;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+      min-width: 100%;
+    }
+
+    div.mapwrap {
+      flex: 1 1 0;
+      /* YEAH THIS IS HUGE */
+    }
+
+    div.mapinfo {
+      flex: 1 1 0;
+      width: 100%;
+      padding: 0px 10px 0px 10px;
+      /* YEAH THIS IS HUGE */
+    }
+
+    div.mapnames,
+    div.maptypes {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      width: 100%;
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: row;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+      min-width: 100%;
+    }
+
+    span.maptype {
+      color: #8cba11;
+      font-weight: normal;
+      font-size: 1.5em;
+
+    }
+
+    span.mapname {}
+
+    img,
+    video {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      left: 0%;
+      object-fit: cover;
+      border: 0px;
+      overflow: visible;
+      opacity: 0.5;
+    }
+
+    img {
+      display: block;
+    }
+
+    video {
+      display: none;
+    }
+
+    div.mapscore {
+      position: relative;
+      height: 100%;
+      top: -100%;
+      padding: 0px 10px 0px 10px;
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: column;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+    }
+
+    div.mapscore span {
+      flex: 1 1 0;
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: row;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+      min-width: 100%;
+    }
+
+    span.logo {
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      -webkit-filter: drop-shadow(0 0 10px black);
+      /* background-color: rgba(0,0,0,0.5); */
+    }
+
+    span.teamname {
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      font-weight: normal;
+      font-size: 2em;
+      font-family: 'Rajdhani';
+    }
+
+    span.score {
+      font-weight: normal;
+      font-size: 4em;
+      font-family: 'Rajdhani';
+    }
+
+    div.footer {
+      position: absolute;
+      left: 0px;
+      top: 950px;
+      width: 1870px;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: row;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+      padding: 25px;
+    }
+
+    div.tournament {
+      flex: 1 1 0;
+      height: 80px;
+      background-position: left;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    div.channel {
+      flex: 1 1 0;
+      height: 80px;
+      background-position: right;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    @keyframes tagline {
+      0% {
+        clip-path: polygon(0% -100%, 0 -100%, 0% 200%, 0% 200%);
+        transform: translateX(50%)
+          /* skewX(-15deg) */
+        ;
+      }
+
+      100% {
+        clip-path: polygon(0% -100%, 100% -100%, 100% 200%, 0% 200%);
+        transform: translateX(0%)
+          /* skewX(-15deg) */
+        ;
+      }
+    }
+
+    div.tagline {
+      min-width: 375px;
+      animation: tagline .5s;
+      animation-fill-mode: backwards;
+      animation-delay: 2s;
+      /* transform: skewX(-15deg); */
+    }
+
+    span.tertiary {
+      font-size: 1.8em;
+      border-style: solid;
+      font-weight: bold;
+      text-align: center font-family: 'Rajdhani';
+      padding: 3px 15px 2px 15px;
+      border-width: 0px 6px 0px 6px;
+      background-color: black;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    /* jshint esversion: 8 */
+    var element, bgColor, brightness, r, g, b, hsp;
+
+    function lightOrDark(color) {
+
+      // Check the format of the color, HEX or RGB?
+      if (color.match(/^rgb/)) {
+
+        // If HEX --> store the red, green, blue values in separate variables
+        color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+
+        r = color[1];
+        g = color[2];
+        b = color[3];
+      } else {
+
+        // If RGB --> Convert it to HEX: http://gist.github.com/983661
+        color = +("0x" + color.slice(1).replace(
+          color.length < 5 && /./g, '$&$&'
+        ));
+
+        r = color >> 16;
+        g = color >> 8 & 255;
+        b = color & 255;
+      }
+
+      // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+      hsp = Math.sqrt(
+        0.299 * (r * r) +
+        0.587 * (g * g) +
+        0.114 * (b * b)
+      );
+
+      // Using the HSP value, determine whether the color is light or dark
+      if (hsp > 180) {
+
+        return '#000000';
+      } else {
+
+        return '#ffffff';
+      }
+    }
+
+    async function interval() {
+      //Set to 1 for video functions, 0 to disable
+      let enablevideo = 0;
+      let blankimage = "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg=="
+      //Get constant team data
+      let t1nametxt = await fetch('../scoreboard/match1/t1name.txt');
+      t1nametxt = await t1nametxt.text();
+      let t2nametxt = await fetch('../scoreboard/match1/t2name.txt');
+      t2nametxt = await t2nametxt.text();
+      let t1colortxt = await fetch('../scoreboard/match1/t1color.txt');
+      t1colortxt = await t1colortxt.text();
+      let t2colortxt = await fetch('../scoreboard/match1/t2color.txt');
+      t2colortxt = await t2colortxt.text();
+
+      //Set the global team colors
+      $('div').css("border-left-color", (t1colortxt));
+      t1colorspan = lightOrDark(t1colortxt);
+      t1colorshade = lightOrDark(t1colorspan);
+      $('div').css("border-right-color", (t2colortxt));
+      t2colorspan = lightOrDark(t2colortxt);
+      t2colorshade = lightOrDark(t2colorspan);
+
+      //Get constant theme data
+      let colortheme1txt = await fetch('../scoreboard/general/colortheme1.txt');
+      colortheme1txt = await colortheme1txt.text();
+      let colortheme2txt = await fetch('../scoreboard/general/colortheme2.txt');
+      colortheme2txt = await colortheme2txt.text();
+      let colortheme3txt = await fetch('../scoreboard/general/colortheme3.txt');
+      colortheme3txt = await colortheme3txt.text();
+
+      //Set theme colors
+      $('body').css("border-color", (colortheme3txt));
+      $('span.maptype').css("color", (colortheme3txt));
+      $('span.mapname, div.scoreboard').css("color", (colortheme2txt));
+      $('div.wrapper').css("background-color", (colortheme1txt));
+
+      $('span.tertiary').css("background-color", (colortheme1txt));
+      $('span.tertiary').css("color", (colortheme2txt));
+      $('span.tertiary').css("border-color", (colortheme3txt));
+
+
+      //Loop the code for repeating functions, incrementing each time.
+      let theincomplete = 0;
+      let totalmap = 0;
+      for (let i = 0; i < 7; ++i) {
+
+
+        //Get the map type details
+        let mapgametypetxt = await fetch('../scoreboard/match1/m' + (i + 1) + 'mapgametype.txt');
+        mapgametypetxt = await mapgametypetxt.text();
+        let check = (mapgametypetxt).replace(/\n|\r/gi, "");
+        let unformat = (mapgametypetxt);
+        let node4 = $(".mapinfo" + (i + 1) + " .maptype");
+        let node5 = $(".mapwrap" + (i + 1) + ", .mapinfo" + (i + 1));
+        if (check != "") {
+          node5.css("display", "block");
+          totalmap = totalmap + 1;
+        } else {
+          node5.css("display", "none");
+        }
+        node4.text(unformat);
+
+        //Get the map name details
+        let maptxt = await fetch('../scoreboard/match1/m' + (i + 1) + 'map.txt');
+        maptxt = await maptxt.text();
+        if ((maptxt).replace(/\\/gi, "/").replace(/\"/gi, "\\\"").replace(/\n/gi, "").replace(/\r/gi, "") == "") {
+          reptext = "TBA";
+        } else {
+          reptext = (maptxt)
+        }
+        let img = "../scoreboard/maps/" + (reptext).replace(/:/g, "-").replace("TBA", (check)).replace(/ /g, "_") + ".png";
+        let video = "assets/maps/video/" + (reptext).replace("\u00fa", "u").replace("\u00f6", "o").replace(":", "").replace("TBA", "blank") + ".mp4";
+        //let reptext = (maptxt).replace("?", "TBA");
+        let node1 = $(".mapbg" + (i + 1) + " img");
+        let node3 = $(".mapbg" + (i + 1) + " video");
+        let node2 = $(".mapinfo" + (i + 1) + " .mapname");
+        if (node1.attr("src") != img) {
+          node1.attr("src", img);
+          node2.text(reptext);
+          //  if ((enablevideo) == 1) {
+          //    node3.attr("src", video);
+          //  }
+        }
+
+        //Determine and colour each map winner
+        let mapwintxt = await fetch('../scoreboard/match1/m' + (i + 1) + 'mapwin.txt');
+        mapwintxt = await mapwintxt.text();
+        let mt1scoretxt = await fetch('../scoreboard/match1/m' + (i + 1) + 't1score.txt');
+        mt1scoretxt = await mt1scoretxt.text();
+        let mt2scoretxt = await fetch('../scoreboard/match1/m' + (i + 1) + 't2score.txt');
+        mt2scoretxt = await mt2scoretxt.text();
+
+        let regex = "";
+        [
+          "gaming", "team", "e-?sports", "house", "academy", "uni(versity)?", "state", "tech", "and", "the", "of", "eu",
+        ].forEach((value) => {
+          regex += "|(" + value + ")";
+        });
+        regex = "\\b(" + regex.substring(1) + ")\\b";
+
+        let teamformatted = "<div><b>" + mapwintxt.replace(
+            new RegExp(regex, "gi"), "</b>$1<b>")
+          .replace(/&/gi, "</b>&<b>") + "</b></div>";
+        $('.mapbg' + (i + 1) + ' .mapscore .teamname').html(teamformatted);
+
+        if ((mapwintxt).replace(/\\/gi, "/").replace(/\"/gi, "\\\"").replace(/\n/gi, "").replace(/\r/gi, "") != "") {
+          $('.mapbg' + (i + 1) + ' img').css("filter", "greyscale(100%)");
+          $('.mapbg' + (i + 1) + ' img, .mapbg' + (i + 1) + ' video').css("opacity", "0.5");
+          $('.mapbg' + (i + 1) + ' img').css("mix-blend-mode", "Luminosity");
+          let data = await fetch("../scoreboard/match1/m" + (i + 1) + "mapwin.png");
+          data = await data.arrayBuffer();
+          //console.log(data);
+          let bytes = new Uint8Array(data);
+          let str = "";
+          for (let b of bytes) {
+            str += String.fromCharCode(b);
+          }
+          //console.log(str);
+          //console.log(btoa(str));
+          //if (btoa(str) != "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg==") {
+          document.querySelector(".mapbg" + (i + 1) + " .mapscore .logo").style.backgroundImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+          //  $(".mapbg" + (i + 1) + " .mapscore .logo").css("display", "block");
+          //} else {
+          //  $(".mapbg" + (i + 1) + " .mapscore .logo").css("display", "none");
+          //}
+          if ((mapwintxt) == (t1nametxt)) { // If team 1 is the winner
+            $('.mapbg' + (i + 1)).css("background-color", (t1colortxt));
+            $('.mapbg' + (i + 1) + ' .mapscore .score').html("<b>" + (mt1scoretxt).replace(/\n/gi, "").replace(/\r/gi, "") + "</b>-" + (mt2scoretxt).replace(/\n/gi, "").replace(/\r/gi, ""));
+            $('.mapbg' + (i + 1) + ' .mapscore span').css("color", (t1colorspan));
+            $('.mapbg' + (i + 1) + ' .mapscore span').css("text-shadow", "0px 0px 10px " + (t1colorshade));
+            $('.mapbg' + (i + 1) + ' img, .mapbg' + (i + 1) + ' video').css("opacity", "0.5");
+            if ((enablevideo) == 1) {
+              $('.mapbg' + (i + 1) + ' img').css("display", "block");
+              $('.mapbg' + (i + 1) + ' video').css("display", "none");
+              node3.attr("src", "");
+            }
+            //$('.mapinfo' + (i + 1) + ' .maptype').css("color", (t1colortxt));
+          } else if ((mapwintxt) == (t2nametxt)) { // If team 2 is the winner
+            $('.mapbg' + (i + 1)).css("background-color", (t2colortxt));
+            $('.mapbg' + (i + 1) + ' .mapscore .score').html((mt1scoretxt).replace(/\n/gi, "").replace(/\r/gi, "") + "-<b>" + (mt2scoretxt).replace(/\n/gi, "").replace(/\r/gi, "") + "</b>");
+            $('.mapbg' + (i + 1) + ' .mapscore span').css("color", (t2colorspan));
+            $('.mapbg' + (i + 1) + ' .mapscore span').css("text-shadow", "0px 0px 10px " + (t2colorshade));
+            $('.mapbg' + (i + 1) + ' img, .mapbg' + (i + 1) + ' video').css("opacity", "0.5");
+            if ((enablevideo) == 1) {
+              $('.mapbg' + (i + 1) + ' img').css("display", "block");
+              $('.mapbg' + (i + 1) + ' video').css("display", "none");
+              node3.attr("src", "");
+            }
+            //$('.mapinfo' + (i + 1) + ' .maptype').css("color", (t2colortxt));
+          } else if ((mapwintxt).replace(/\n/gi, "").replace(/\r/gi, "") == "DRAW") { // If it's a draw
+            $('.mapbg' + (i + 1)).css("background-color", (colortheme1txt));
+            $('.mapbg' + (i + 1) + ' .mapscore .score').html((mt1scoretxt).replace(/\n/gi, "").replace(/\r/gi, "") + "-" + (mt2scoretxt).replace(/\n/gi, "").replace(/\r/gi, ""));
+            $('.mapbg' + (i + 1) + ' .mapscore span').css("color", "white");
+            $('.mapbg' + (i + 1) + ' .mapscore span').css("text-shadow", "0px 0px 10px black");
+            $('.mapbg' + (i + 1) + ' img, .mapbg' + (i + 1) + ' video').css("opacity", "0.5");
+            if ((enablevideo) == 1) {
+              $('.mapbg' + (i + 1) + ' img').css("display", "block");
+              $('.mapbg' + (i + 1) + ' video').css("display", "none");
+              node3.attr("src", "");
+            }
+          }
+        } else if (theincomplete > 0) { // for other incomplete maps
+          theincomplete = theincomplete + 1;
+          $('.mapbg' + (i + 1) + ' img').css("filter", "greyscale(0%)");
+          $('.mapbg' + (i + 1) + ' img, .mapbg' + (i + 1) + ' video').css("opacity", "0.33");
+          $('.mapbg' + (i + 1) + ' img').css("mix-blend-mode", "normal");
+          $('.mapbg' + (i + 1)).css("background-color", (colortheme1txt));
+          $('.mapbg' + (i + 1) + ' .mapscore .score').html("");
+          $('.mapbg' + (i + 1) + ' .mapscore span').css("color", "white");
+          $('.mapbg' + (i + 1) + ' .mapscore span').css("text-shadow", "0px 0px 10px black");
+          if ((enablevideo) == 1) {
+            $('.mapbg' + (i + 1) + ' img').css("display", "block");
+            $('.mapbg' + (i + 1) + ' video').css("display", "none");
+            node3.attr("src", "");
+          }
+          document.querySelector(".mapbg" + (i + 1) + " .mapscore .logo").style.backgroundImage = "url(data:image/jpeg;base64,)";
+        } else if (theincomplete == 0) { // Check to see if it's the first incomplete map
+          theincomplete = theincomplete + 1;
+
+          $('.mapbg' + (i + 1) + ' img').css("filter", "greyscale(0%)");
+          $('.mapbg' + (i + 1) + ' img, .mapbg' + (i + 1) + ' video').css("opacity", "1");
+          $('.mapbg' + (i + 1) + ' img').css("mix-blend-mode", "normal");
+          $('.mapbg' + (i + 1)).css("background-color", (colortheme1txt));
+          $('.mapbg' + (i + 1) + ' .mapscore span').css("color", "white");
+          $('.mapbg' + (i + 1) + ' .mapscore span').css("text-shadow", "0px 0px 10px black");
+          if ((mt1scoretxt).replace(/\n/gi, "").replace(/\r/gi, "") == 0 && (mt2scoretxt).replace(/\n/gi, "").replace(/\r/gi, "") == 0) {
+            $('.mapbg' + (i + 1) + ' .mapscore .score').html("");
+          } else {
+            $('.mapbg' + (i + 1) + ' .mapscore .score').html((mt1scoretxt).replace(/\n/gi, "").replace(/\r/gi, "").replace(/ /gi, "") + "-" + (mt2scoretxt).replace(/\n/gi, "").replace(/\r/gi, ""));
+          }
+          if ((enablevideo) == 1) {
+            if ((reptext).replace(/\n/gi, "").replace(/\r/gi, "") != "TBA") {
+              $('.mapbg' + (i + 1) + ' img').css("display", "none");
+              $('.mapbg' + (i + 1) + ' video').css("display", "block");
+              if (node3.attr("src") != video) {
+                node3.attr("src", video);
+              }
+            } else {
+              $('.mapbg' + (i + 1) + ' img').css("display", "block");
+              $('.mapbg' + (i + 1) + ' video').css("display", "none");
+              node3.attr("src", "");
+            }
+          } else {
+            $('.mapbg' + (i + 1) + ' img').css("display", "block");
+            $('.mapbg' + (i + 1) + ' video').css("display", "none");
+            node3.attr("src", "");
+          }
+          document.querySelector(".mapbg" + (i + 1) + " .mapscore .logo").style.backgroundImage = "url(data:image/jpeg;base64,)";
+        }
+
+
+        //End the loop
+      }
+
+      for (let g = 0; g < 2; ++g) {
+        let data = await fetch("../scoreboard/general/image" + ((g * 14) + 1) + ".png");
+        data = await data.arrayBuffer();
+        //console.log(data);
+        let bytes = new Uint8Array(data);
+        let str = "";
+        for (let b of bytes) {
+          str += String.fromCharCode(b);
+        }
+        document.querySelector(".image" + (g + 1)).style.backgroundImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+      }
+
+      //$('.scoreboard span').text("First to " + (Math.floor(totalmap / 2) + 1));
+      $('.scoreboard span').text("Map Set");
+      //End the entire function
+    }
+
+    //Set the refresh rate in milliseconds
+    $(() => {
+      interval();
+      setInterval(interval, 1000);
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="scoreboard">
+      <span>First to 3<span>
+    </div>
+    <div class="mapgroup">
+      <div class="mapwrap mapwrap1">
+        <div class="mapbg mapbg1">
+          <img></img><video autoplay muted loop></video>
+          <div class="mapscore">
+            <span class="teamname"></span>
+            <span class="logo"></span>
+            <span class="score"></span>
+          </div>
+        </div>
+      </div>
+      <div class="mapwrap mapwrap2">
+        <div class="mapbg mapbg2">
+          <img></img><video autoplay muted loop></video>
+          <div class="mapscore">
+            <span class="teamname"></span>
+            <span class="logo"></span>
+            <span class="score"></span>
+          </div>
+        </div>
+      </div>
+      <div class="mapwrap mapwrap3">
+        <div class="mapbg mapbg3">
+          <img></img><video autoplay muted loop></video>
+          <div class="mapscore">
+            <span class="teamname"></span>
+            <span class="logo"></span>
+            <span class="score"></span>
+          </div>
+        </div>
+      </div>
+      <div class="mapwrap mapwrap4">
+        <div class="mapbg mapbg4">
+          <img></img><video autoplay muted loop></video>
+          <div class="mapscore">
+            <span class="teamname"></span>
+            <span class="logo"></span>
+            <span class="score"></span>
+          </div>
+        </div>
+      </div>
+      <div class="mapwrap mapwrap5">
+        <div class="mapbg mapbg5">
+          <img></img><video autoplay muted loop></video>
+          <div class="mapscore">
+            <span class="teamname"></span>
+            <span class="logo"></span>
+            <span class="score"></span>
+          </div>
+        </div>
+      </div>
+      <div class="mapwrap mapwrap6">
+        <div class="mapbg mapbg6">
+          <img></img><video autoplay muted loop></video>
+          <div class="mapscore">
+            <span class="teamname"></span>
+            <span class="logo"></span>
+            <span class="score"></span>
+          </div>
+        </div>
+      </div>
+      <div class="mapwrap mapwrap7">
+        <div class="mapbg mapbg7">
+          <img></img><video autoplay muted loop></video>
+          <div class="mapscore">
+            <span class="teamname"></span>
+            <span class="logo"></span>
+            <span class="score"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="textgroup">
+      <div class="mapnames">
+        <div class="mapinfo mapinfo1"><span class="mapname"></span></div>
+        <div class="mapinfo mapinfo2"><span class="mapname"></span></div>
+        <div class="mapinfo mapinfo3"><span class="mapname"></span></div>
+        <div class="mapinfo mapinfo4"><span class="mapname"></span></div>
+        <div class="mapinfo mapinfo5"><span class="mapname"></span></div>
+        <div class="mapinfo mapinfo6"><span class="mapname"></span></div>
+        <div class="mapinfo mapinfo7"><span class="mapname"></span></div>
+      </div>
+      <div class="maptypes">
+        <div class="mapinfo mapinfo1"><span class="maptype"></span></div>
+        <div class="mapinfo mapinfo2"><span class="maptype"></span></div>
+        <div class="mapinfo mapinfo3"><span class="maptype"></span></div>
+        <div class="mapinfo mapinfo4"><span class="maptype"></span></div>
+        <div class="mapinfo mapinfo5"><span class="maptype"></span></div>
+        <div class="mapinfo mapinfo6"><span class="maptype"></span></div>
+        <div class="mapinfo mapinfo7"><span class="maptype"></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="tournament image1"></div>
+    <div class="tagline">
+      <div>
+        <span class="tertiary">Powered by Broadcast.gg</span></div>
+    </div>
+    <div class="channel image2"></div>
+  </div>
+</body>

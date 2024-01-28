@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+    body {
+      margin: 0px auto;
+      overflow: hidden;
+    }
+
+    div {
+      -webkit-animation-timing-function: ease-out;
+    }
+
+    @-webkit-keyframes slideease {
+      0% {
+        transform: translateX(1000px) skewX(15deg);
+      }
+
+      50% {
+        transform: translateX(20px) skewX(15deg);
+      }
+
+      100% {
+        left: transform: translateX(0px) skewX(15deg);
+      }
+    }
+
+    @keyframes stingerwipe {
+      0% {
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+        transform: translateX(0) skewX(-15deg);
+      }
+
+      100% {
+        clip-path: polygon(0% 0, 50% 0, 50% 100%, 0% 100%);
+        transform: translateX(-50%) skewX(-15deg);
+      }
+    }
+
+    div.stingerlogo {
+      position: absolute;
+      top: 0px;
+      left: -150px;
+      width: 2220px;
+      height: 1080px;
+      vertical-align: middle;
+      background-color: #202224;
+      /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3)); */
+      animation: stingerwipe 0.3s;
+      animation-fill-mode: forwards;
+      animation-delay: 1s;
+      transform: skewX(-15deg);
+    }
+
+    div.stingerlogo span.logo {
+      width: 1120px;
+      height: 680px;
+      position: absolute;
+      top: 200px;
+      left: 550px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: slideease 1s;
+      animation-fill-mode: forwards;
+      animation-delay: 0s;
+      transform: skewX(15deg);
+      background-image: url('../scoreboard/general/image15.png');
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0, 1);
+    }
+
+    div.altcolor {
+      position: absolute;
+      top: 0px;
+      left: -150px;
+      width: 2220px;
+      height: 1080px;
+      vertical-align: middle;
+      background-color: white;
+      animation: stingerwipe 0.35s;
+      animation-fill-mode: forwards;
+      animation-delay: 1.05s;
+      transform: skewX(-15deg);
+      /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(127, 127, 127, 0), rgba(0, 0, 0, 0.3)); */
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    async function interval() {
+      let colorthemesting = await fetch('../scoreboard/general/colortheme7.txt');
+      colorthemesting = await colorthemesting.text();
+      let colorthemealt = await fetch('../scoreboard/general/colortheme8.txt');
+      colorthemealt = await colorthemealt.text();
+
+      //Set theme colors
+      $('div.stingerlogo').css("background-color", (colorthemesting));
+      $('div.altcolor').css("background-color", (colorthemealt));
+    }
+
+    $(() => {
+      interval();
+      setInterval(interval, 10000);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="altcolor"></div>
+  <div class="stingerlogo" id="team1colorstinger">
+    <span class="logo" id="team1logobig"></span></div>
+</body>

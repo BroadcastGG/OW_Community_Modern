@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+  @font-face {
+    font-family: 'Rajdhani';
+    src: url("fonts/Rajdhani/Rajdhani-Bold.ttf") format('TrueType');
+    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: 'Rajdhani';
+    src: url("fonts/Rajdhani/Rajdhani-Regular.ttf") format('TrueType');
+    font-weight: normal;
+  }
+
+
+  @font-face {
+    font-family: 'FontAwesome';
+    src: url("fonts/Font Awesome/Font Awesome 5 Brands-Regular-400.otf") format('OpenType');
+  }
+
+    @keyframes teamanimate {
+      0% {
+        clip-path: polygon(0% 0, 0 0%, 0% 100%, 0% 100%);
+        transform: translateX(50%);
+      }
+
+      100% {
+        clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+        transform: translateX(0%);
+      }
+    }
+
+    @keyframes headeranimate {
+      0% {
+        transform: translateX(1200px);
+      }
+
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    @keyframes slideright {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes slideleft {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    body {
+
+      width: 1920px;
+      height: 1080px;
+      margin: 0px auto;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0);
+
+      color: white;
+      border-color: #8cba11;
+      font-family: 'Rajdhani';
+      text-transform: uppercase;
+
+    }
+
+    .header {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: right;
+      justify-content: right;
+      text-align: right;
+      font-size: 3em;
+    }
+
+    .info {
+      flex: 1 1 100%;
+      animation: headeranimate 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    .title {
+      flex: 1 1 100%;
+      font-size: 2.5em;
+      font-weight: bold;
+      position: relative;
+      top: -37px;
+      right: -6px;
+      animation: headeranimate 0.5s;
+      animation-fill-mode: backwards;
+      animation-delay: 1.2s;
+    }
+
+    .wrapper {
+      position: absolute;
+      left: 0px;
+      top: 170px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 1920px;
+      height: 680px;
+      font-size: 2em;
+      /* transform: skewX(-15deg); */
+    }
+
+    .group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+    }
+
+    .match {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 100%;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0px 20px 0px 20px;
+    }
+
+    .team {
+      min-width: 500px;
+      height: 70px;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 5px 0px 5px 0px;
+      padding: 0px 0px 0px 10px;
+      background-color: black;
+      border-width: 0px 0px 0px 6px;
+      border-color: #8cba11;
+      border-style: solid;
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0, 1);
+      animation: teamanimate 0.3s;
+      animation-fill-mode: backwards;
+      animation-delay: 10s;
+    }
+
+    .dummy {
+      visibility: hidden;
+    }
+
+    .half {
+      zoom: 50%;
+    }
+
+    .matchinfo {
+      -webkit-animation-timing-function: cubic-bezier(0, 0, 0, 1);
+      animation: teamanimate 0.3s;
+      animation-fill-mode: backwards;
+      animation-delay: 10s;
+      font-weight: bold;
+      position: relative;
+      top: 0.1em;
+    }
+
+    .teamname {
+      flex: 5 5 0;
+      padding: 3px 0px 3px 0px;
+      font-size: 1.2em;
+      font-family: 'Rajdhani';
+    }
+
+    .teamscore {
+      flex: 1 1 0;
+      padding: 6px 0px 6px 0px;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    img {
+      height: 60px;
+      width: 60px;
+      min-height: 60px;
+      min-width: 60px;
+      object-fit: contain;
+      overflow: hidden;
+      /* transform: skewX(15deg); */
+    }
+
+    .footer {
+      position: fixed;
+      left: 0px;
+      top: 950px;
+      width: 1870px;
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0% 100%);
+      display: flex;
+      /* YEAH THIS IS HUGE */
+      flex-direction: row;
+      align-items: center;
+      /* YEAH THIS IS HUGE */
+      justify-content: center;
+      /* YEAH THIS IS HUGE */
+      padding: 25px;
+    }
+
+    .tournament {
+      flex: 1 1 0;
+      height: 80px;
+      background-position: left;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: slideright 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+    .channel {
+      flex: 1 1 0;
+      height: 80px;
+      background-position: right;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: slideleft 1s;
+      animation-fill-mode: backwards;
+      animation-delay: 1s;
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    async function interval() {
+      //Set to 1 for video functions, 0 to disable
+      let blankimage = "iVBORw0KGgoAAAANSUhEUgAAAHAAAABkCAYAAABep7TGAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeF7twQENAAAAwqD3T+1mDiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuBqvZAABFEy6BwAAAABJRU5ErkJggg=="
+      //Get constant theme data
+      let colortheme1txt = await fetch('../scoreboard/general/colortheme1.txt');
+      colortheme1txt = await colortheme1txt.text();
+      let colortheme2txt = await fetch('../scoreboard/general/colortheme2.txt');
+      colortheme2txt = await colortheme2txt.text();
+      let colortheme3txt = await fetch('../scoreboard/general/colortheme3.txt');
+      colortheme3txt = await colortheme3txt.text();
+      let colortheme4txt = await fetch('../scoreboard/general/colortheme4.txt');
+      colortheme4txt = await colortheme4txt.text();
+      let colortheme5txt = await fetch('../scoreboard/general/colortheme5.txt');
+      colortheme5txt = await colortheme5txt.text();
+      let colortheme6txt = await fetch('../scoreboard/general/colortheme6.txt');
+      colortheme6txt = await colortheme6txt.text();
+
+      $('body').css("border-color", colortheme3txt);
+      $('.info').css("color", colortheme6txt);
+      $('.title, .matchinfo').css("color", colortheme5txt);
+      $('.teamscore').css("background-color", colortheme4txt);
+
+
+      generalmessage = await fetch('../scoreboard/general/message.txt');
+      generalmessage = await generalmessage.text();
+      generalmessage = generalmessage.replace(/\n|\r/gi, "");
+
+      $('.info').html(generalmessage);
+
+      //Loop the code for repeating functions, incrementing each time.
+      //var team = [];
+      class team {}
+      var matches = [
+        //"r1m1", "r1m2", "r1m3", "r1m4", "r1m5", "r1m6", "r1m7", "r1m8", //Round 1
+        //"qfm1", "qfm2", "qfm3", "qfm4", //Quarterfinals
+        "sfm1", "sfm2", //Semifinals
+        //"tpm1", //Third Place
+        //"lr1m1", "lr1m2", "lr1m3", "lr1m4", //Loser's Round 1
+        //"lr2m1", "lr2m2", "lr2m3", "lr2m4", //Loser's Round 2
+        //"lr3m1", "lr3m2", //Loser's Round 3
+        //"lr4m1", "lr4m2", //Loser's Round 4
+        "lsfm1", //Loser's Semifinals
+        "wfm1", //Winner Finals
+        "lfm1", //Loser's Finals
+        "gf1m1" //"gf2m1", //Grand Finals
+      ];
+      for (let i = 0; i < 16; ++i) {
+        let teamcls = new team()
+        teamcls.name = await fetch('../scoreboard/bracket/bracketTeam' + (i + 1) + '.txt');
+        teamcls.name = await teamcls.name.text();
+        teamcls.name = teamcls.name.replace(/\n|\r/gi, "")
+        let data = await fetch("../scoreboard/bracket/bracketTeam" + (i + 1) + ".png");
+        data = await data.arrayBuffer();
+        //console.log(data);
+        let bytes = new Uint8Array(data);
+        let str = "";
+        for (let b of bytes) {
+          str += String.fromCharCode(b);
+        }
+        teamcls.logo = btoa(str);
+        team[i] = teamcls;
+        //console.log((i) + ": " + team[i].name);
+        //console.log((i) + " Logo Base64: " + team[i].logo);
+        $('.teamname' + (i)).html(team[i].name);
+        $('.teamlogo' + (i)).attr("src", "data:image/jpeg;base64," + team[i].logo);
+        //console.log(team[i])
+      }
+      for (let m = 0; m < matches.length; ++m) {
+        let animate1 = 1 + 0.15 * m
+        console.log(animate1);
+        let animate2 = 1.05 + 0.15 * m
+        console.log(animate2);
+        let animate3 = 1.10 + 0.15 * m
+        console.log(animate3);
+        let node = matches[m]
+        let team1 = await fetch('../scoreboard/bracket/bracket' + matches[m] + 'team1.txt');
+        team1 = await team1.text();
+        team1 = team1.replace(/\n|\r/gi, "");
+        let team2 = await fetch('../scoreboard/bracket/bracket' + matches[m] + 'team2.txt');
+        team2 = await team2.text();
+        team2 = team2.replace(/\n|\r/gi, "");
+        //if (team1 != "" && team2 != "") {
+        let score1 = await fetch('../scoreboard/bracket/bracket' + matches[m] + 'score1.txt');
+        score1 = await score1.text();
+        score1 = score1.replace(/\n|\r/gi, "");
+        score1 = parseInt(score1, 10)
+        let score2 = await fetch('../scoreboard/bracket/bracket' + matches[m] + 'score2.txt');
+        score2 = await score2.text();
+        score2 = score2.replace(/\n|\r/gi, "");
+        score2 = parseInt(score2, 10)
+        let logo1 = ""
+        let logo2 = ""
+        if (team1 == "") {
+          team1 = "TBA"
+          $('.' + node + ' .logo1').css("display", "none");
+        } else {
+          $('.' + node + ' .logo1').css("display", "block");
+        }
+        if (team2 == "") {
+          team2 = "TBA"
+          $('.' + node + ' .logo2').css("display", "none");
+        } else {
+          $('.' + node + ' .logo2').css("display", "block");
+        }
+        if (score1 == "0" && score2 == "0") {
+          $('.' + node + ' .score1').css("display", "none");
+          $('.' + node + ' .score2').css("display", "none");
+        } else {
+          $('.' + node + ' .score1').css("display", "block");
+          $('.' + node + ' .score2').css("display", "block");
+        }
+        let check = 10
+        if (node == "wfm1") {
+          check = 10
+        }
+        if (score1 > score2) {
+          $('.' + node + ' .team1').css("background-color", colortheme3txt);
+          $('.' + node + ' .team1').css("border-color", colortheme2txt);
+          $('.' + node + ' .team1').css("color", colortheme1txt);
+          $('.' + node + ' .team2').css("background-color", colortheme1txt);
+          $('.' + node + ' .team2').css("border-color", colortheme3txt);
+          $('.' + node + ' .team2').css("color", colortheme3txt);
+        } else if (score2 > score1) {
+          $('.' + node + ' .team2').css("background-color", colortheme3txt);
+          $('.' + node + ' .team2').css("border-color", colortheme2txt);
+          $('.' + node + ' .team2').css("color", colortheme1txt);
+          $('.' + node + ' .team1').css("background-color", colortheme1txt);
+          $('.' + node + ' .team1').css("border-color", colortheme3txt);
+          $('.' + node + ' .team1').css("color", colortheme3txt);
+        } else {
+          $('.' + node + ' .team2').css("background-color", colortheme1txt);
+          $('.' + node + ' .team2').css("border-color", colortheme3txt);
+          $('.' + node + ' .team2').css("color", colortheme2txt);
+          $('.' + node + ' .team1').css("background-color", colortheme1txt);
+          $('.' + node + ' .team1').css("border-color", colortheme3txt);
+          $('.' + node + ' .team1').css("color", colortheme2txt);
+        }
+
+
+        for (let f = 0; f < 16; ++f) {
+          if (team[f].name == team1) {
+            logo1 = team[f].logo
+          }
+          if (team[f].name == team2) {
+            logo2 = team[f].logo
+          }
+        }
+        let regex = "";
+        [
+          "gaming", "team", "e-?sports", "house", "academy", "uni(versity)?", "state", "tech", "and", "the", "of", "eu",
+        ].forEach((value) => {
+          regex += "|(" + value + ")";
+        });
+        regex = "\\b(" + regex.substring(1) + ")\\b";
+
+        team1 = "<b>" + team1.replace(
+            new RegExp(regex, "gi"), "</b>$1<b>")
+          .replace(/&/gi, "</b>&<b>") + "</b>";
+        team2 = "<b>" + team2.replace(
+            new RegExp(regex, "gi"), "</b>$1<b>")
+          .replace(/&/gi, "</b>&<b>") + "</b>";
+        $('.' + node + ' .name1').html(team1);
+        $('.' + node + ' .name2').html(team2);
+        $('.' + node + ' .score1').html(score1);
+        $('.' + node + ' .score2').html(score2);
+        $('.' + node + ' .logo1').attr("src", "data:image/jpeg;base64," + logo1);
+        $('.' + node + ' .logo2').attr("src", "data:image/jpeg;base64," + logo2);
+
+        $('.' + node + ' .team1').css("animation-delay", animate1 + "s");
+        $('.' + node + ' .team2').css("animation-delay", animate2 + "s");
+        $('.' + node + ' .matchinfo').css("animation-delay", animate3 + "s");
+
+
+        //animation: teamanimate 0.5s;
+        //animation-fill-mode: backwards;
+        //  $('.' + node).css("display", "block");
+        //} else {
+        //  $('.' + node).css("display", "none");
+        //}
+      }
+      for (let g = 0; g < 2; ++g) {
+        let data = await fetch("../scoreboard/general/image" + ((g * 14) + 1) + ".png");
+        data = await data.arrayBuffer();
+        //console.log(data);
+        let bytes = new Uint8Array(data);
+        let str = "";
+        for (let b of bytes) {
+          str += String.fromCharCode(b);
+        }
+        document.querySelector(".image" + (g + 1)).style.backgroundImage = "url(data:image/jpeg;base64," + btoa(str) + ")";
+      }
+      //End the entire function
+    }
+
+    //Set the refresh rate in milliseconds
+    $(() => {
+      interval();
+      setInterval(interval, 1000);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <span class="info"></span>
+    <span class="title">Playoffs</span>
+  </div>
+  <div class="wrapper">
+
+    <div class="group qf">
+      <div class="match sfm1">
+        <span class="matchinfo">Semifinal 1</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match sfm2">
+        <span class="matchinfo">Semifinal 2</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match dummy half">
+        <span class="matchinfo">Dummy</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match lsfm1">
+        <span class="matchinfo">Loser's Semifinal</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+    </div>
+    <div class="group sf">
+      <div class="match dummy half">
+        <span class="matchinfo">Dummy</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match wfm1">
+        <span class="matchinfo">Winner's Final</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match dummy">
+        <span class="matchinfo">Dummy</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match lfm1">
+        <span class="matchinfo">Loser's Final</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+    </div>
+    <div class="group wf">
+      <div class="match dummy half">
+        <span class="matchinfo">Dummy</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match dummy">
+        <span class="matchinfo">Dummy</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match gf1m1">
+        <span class="matchinfo">Grand Final</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+      <div class="match dummy">
+        <span class="matchinfo">Dummy</span>
+        <div class="team team1">
+          <img class="teamlogo logo1"></img>
+          <span class="teamname name1"></span>
+          <span class="teamscore score1"></span>
+        </div>
+        <div class="team team2">
+          <img class="teamlogo logo2"></img>
+          <span class="teamname name2"></span>
+          <span class="teamscore score2"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="tournament image1"></div>
+    <div class="channel image2"></div>
+  </div>
+</body>
